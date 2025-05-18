@@ -1,7 +1,7 @@
 import {FileRecord} from '../models/file.js';
 import axios from 'axios';
+import { baseURL } from '../config.js'; 
 
-const baseURL = 'http://localhost:5000';
 
 export class FileService {
 
@@ -28,5 +28,9 @@ export class FileService {
     } catch (error) {
         console.error('Yükleme hatası:', error);
     }
+    };
+
+    static handleDelete = async (id) => {
+        await axios.delete(baseURL + `/files/delete/${id}`);
     };
 }
