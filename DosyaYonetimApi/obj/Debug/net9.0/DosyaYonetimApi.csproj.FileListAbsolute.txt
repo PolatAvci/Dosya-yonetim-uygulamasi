@@ -166,9 +166,6 @@ C:\Users\polat\OneDrive\Masaüstü\dosya-yonetim-uygulamasi\DosyaYonetimApi\bin\
 C:\Users\polat\OneDrive\Masaüstü\dosya-yonetim-uygulamasi\DosyaYonetimApi\bin\Debug\net9.0\Swashbuckle.AspNetCore.Swagger.dll
 C:\Users\polat\OneDrive\Masaüstü\dosya-yonetim-uygulamasi\DosyaYonetimApi\bin\Debug\net9.0\Swashbuckle.AspNetCore.SwaggerGen.dll
 C:\Users\polat\OneDrive\Masaüstü\dosya-yonetim-uygulamasi\DosyaYonetimApi\bin\Debug\net9.0\Swashbuckle.AspNetCore.SwaggerUI.dll
-C:\Users\polat\OneDrive\Masaüstü\dosya-yonetim-uygulamasi\DosyaYonetimApi\bin\Debug\net9.0\dosya-yonetim-uygulamasi\package-lock.json
-C:\Users\polat\OneDrive\Masaüstü\dosya-yonetim-uygulamasi\DosyaYonetimApi\bin\Debug\net9.0\dosya-yonetim-uygulamasi\package.json
-C:\Users\polat\OneDrive\Masaüstü\dosya-yonetim-uygulamasi\DosyaYonetimApi\bin\Debug\net9.0\dosya-yonetim-uygulamasi\public\manifest.json
 C:\Users\polat\OneDrive\Masaüstü\dosya-yonetim-uygulamasi\dosya-yonetim-uygulamasi\DosyaYonetimApi\bin\Debug\net9.0\appsettings.Development.json
 C:\Users\polat\OneDrive\Masaüstü\dosya-yonetim-uygulamasi\dosya-yonetim-uygulamasi\DosyaYonetimApi\bin\Debug\net9.0\appsettings.json
 C:\Users\polat\OneDrive\Masaüstü\dosya-yonetim-uygulamasi\dosya-yonetim-uygulamasi\DosyaYonetimApi\bin\Debug\net9.0\DosyaYonetimApi.staticwebassets.endpoints.json
@@ -337,3 +334,4 @@ C:\Users\polat\OneDrive\Masaüstü\dosya-yonetim-uygulamasi\dosya-yonetim-uygula
 C:\Users\polat\OneDrive\Masaüstü\dosya-yonetim-uygulamasi\dosya-yonetim-uygulamasi\DosyaYonetimApi\obj\Debug\net9.0\DosyaYonetimApi.pdb
 C:\Users\polat\OneDrive\Masaüstü\dosya-yonetim-uygulamasi\dosya-yonetim-uygulamasi\DosyaYonetimApi\obj\Debug\net9.0\DosyaYonetimApi.genruntimeconfig.cache
 C:\Users\polat\OneDrive\Masaüstü\dosya-yonetim-uygulamasi\dosya-yonetim-uygulamasi\DosyaYonetimApi\obj\Debug\net9.0\ref\DosyaYonetimApi.dll
+C:\Users\polat\OneDrive\Masaüstü\Dosya-yonetim-uygulamasi\DosyaYonetimApi\obj\Debug\net9.0\DosyaYonetimApi.sourcelink.json

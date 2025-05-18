@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "3XkSQJc5qcU=",
+  "dgSpecHash": "OXmgimqxFb0=",
   "success": true,
-  "projectFilePath": "C:\\Users\\polat\\OneDrive\\Masaüstü\\dosya-yonetim-uygulamasi\\dosya-yonetim-uygulamasi\\DosyaYonetimApi\\DosyaYonetimApi.csproj",
+  "projectFilePath": "C:\\Users\\polat\\OneDrive\\Masaüstü\\Dosya-yonetim-uygulamasi\\DosyaYonetimApi\\DosyaYonetimApi.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\polat\\.nuget\\packages\\azure.core\\1.38.0\\azure.core.1.38.0.nupkg.sha512",
     "C:\\Users\\polat\\.nuget\\packages\\azure.identity\\1.11.4\\azure.identity.1.11.4.nupkg.sha512",
