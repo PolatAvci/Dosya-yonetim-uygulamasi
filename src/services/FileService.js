@@ -33,4 +33,8 @@ export class FileService {
     static handleDelete = async (id) => {
         await axios.delete(baseURL + `/files/delete/${id}`);
     };
+
+    static handleDelete = async (id) => {
+        await axios.delete(baseURL + `/files/delete/${id}`);
+    };
 }

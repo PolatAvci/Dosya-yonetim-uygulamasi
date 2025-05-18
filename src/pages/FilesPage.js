@@ -1,3 +1,4 @@
+// FilesPage.js
 import React, { useState, useEffect } from 'react';
 import AddFile from '../components/AddFile/AddFile';
 import FileList from '../components/FileList/FileList';
@@ -6,19 +7,24 @@ import { FileService } from '../services/FileService';
 export function FilesPage() {
   const [files, setFiles] = useState([]);
 
-  const getFiles = async () => {
-    const fetchedFiles = await FileService.fetchFiles();
-    setFiles(fetchedFiles);
+  const fetchFiles = async () => {
+    const fetched = await FileService.fetchFiles();
+    setFiles(fetched);
+  };
+
+  const deleteFile = async (fileId) => {
+    await FileService.handleDelete(fileId);
+    fetchFiles(); 
   };
 
   useEffect(() => {
-    getFiles();
+    fetchFiles();
   }, []);
 
   return (
     <div>
-      <AddFile getFiles={getFiles} />
-      <FileList files={files} />
+      <AddFile getFiles={fetchFiles} />
+      <FileList files={files} onDelete={deleteFile} />
     </div>
   );
 }
