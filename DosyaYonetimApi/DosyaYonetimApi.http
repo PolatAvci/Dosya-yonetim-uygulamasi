@@ -1,0 +1,6 @@
+@DosyaYonetimApi_HostAddress = http://localhost:5149
+
+GET {{DosyaYonetimApi_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
