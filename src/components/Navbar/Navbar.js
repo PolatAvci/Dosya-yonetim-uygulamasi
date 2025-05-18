@@ -11,6 +11,7 @@ function Navbar() {
         <li><Link to="/dosyalarim">Dosyalarım</Link></li>
         <li><Link to="/görsellerim">Görsellerim</Link></li>
         <li><Link to="/tümü">Tümü</Link></li>
+        <li><Link to="/ekle">Ekle</Link></li>
       </ul>
     </nav>
   );

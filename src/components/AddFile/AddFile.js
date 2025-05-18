@@ -7,10 +7,11 @@ export default function AddFile({ getFiles }) {
   const [description, setDescription] = useState('');
   const [fileInputKey, setFileInputKey] = useState(Date.now());
   const [error, setError] = useState('');
+  const [success, setSuccess] = useState(false); // ✅ Yeni: başarı durumu
 
   const handleFileChange = (e) => {
     setSelectedFile(e.target.files[0]);
-    setError(''); // önceki hatayı temizle
+    setError('');
   };
 
   const uploadFile = async () => {
@@ -22,11 +23,22 @@ export default function AddFile({ getFiles }) {
     }
 
     await FileService.handleUpload(selectedFile, description);
-    await getFiles(); 
+    
+    if (getFiles) {
+      await getFiles(); // Listeyi güncelle
+    }
+
+    // Formu sıfırla
     setFileInputKey(Date.now());
     setDescription('');
     setSelectedFile(null);
     setError('');
+    setSuccess(true); // ✅ Başarı mesajı göster
+
+    // ✅ 3 saniye sonra mesajı kaldır
+    setTimeout(() => {
+      setSuccess(false);
+    }, 3000);
   };
 
   return (
@@ -53,6 +65,7 @@ export default function AddFile({ getFiles }) {
       />
 
       {error && <p className="error-text">{error}</p>}
+      {success && <p className="success-text">✅ Dosya başarıyla yüklendi.</p>}
 
       <button
         className='button'

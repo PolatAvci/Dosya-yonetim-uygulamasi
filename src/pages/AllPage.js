@@ -4,7 +4,7 @@ import AddFile from '../components/AddFile/AddFile';
 import FileList from '../components/FileList/FileList';
 import { FileService } from '../services/FileService';
 
-export function FilesPage() {
+export function AllPage() {
   const [files, setFiles] = useState([]);
 
   const fetchFiles = async () => {
