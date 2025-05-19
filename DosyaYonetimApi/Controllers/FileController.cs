@@ -25,6 +25,20 @@ namespace FileManagementApi.Controllers
             return Ok(files);
         }
 
+        [HttpGet("{id}")]
+        public async Task<IActionResult> GetFileById(int id)
+        {
+            var file = await _context.Files
+                .AsNoTracking()
+                .FirstOrDefaultAsync(f => f.Id == id);
+
+            if (file == null)
+                return NotFound(new { message = "Dosya bulunamadı." });
+
+            return Ok(file);
+        }
+
+
         [HttpPost("upload")]
         [Consumes("multipart/form-data")] // Swagger için gerekli!
         public async Task<IActionResult> Upload([FromForm] FileUploadRequest request)

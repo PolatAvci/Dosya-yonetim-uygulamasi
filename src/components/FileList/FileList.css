@@ -27,6 +27,23 @@ ul {
   text-align: center;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
   background-color: #f9f9f9;
+  /* Taşmayı engelle */
+  overflow: hidden; 
+  word-wrap: break-word;
+  word-break: break-word;
+  /*
+  height: auto;
+  min-height: 260px;
+  */
+}
+
+.card a,
+.card p,
+.card span {
+  max-width: 100%;
+  overflow-wrap: break-word;
+  word-break: break-word;
+  text-align: center;
 }
 
 .card a {

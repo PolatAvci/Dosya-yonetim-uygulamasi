@@ -37,11 +37,12 @@ export default function MyImages() {
                         <button className="delete-btn" onClick={() => onDelete(file.id)}>
                             <FaTrash />
                         </button>
-                        <img src={`${baseURL}/uploads/${file.filePath}`} alt={file.name} />
                         <a href={`${baseURL}/uploads/${file.filePath}`} target="_blank" rel="noreferrer">
+                        <img src={`${baseURL}/uploads/${file.filePath}`} alt={file.name} />
+                        </a>
+                        <a href={`/images/${file.id}`} rel="noreferrer">
                             <strong>{file.name}</strong>
-                        </a>{" "}
-                        - {file.description}
+                        </a>
                         </li>
                     ))}
                     </ul>

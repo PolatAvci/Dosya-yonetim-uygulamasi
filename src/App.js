@@ -5,6 +5,7 @@ import { AllPage } from './pages/AllPage';
 import MyImagesPage from './pages/MyImages/MyImagesPage';
 import MyFiles from './pages/MyFiles/MyFiles';
 import AddFile from './components/AddFile/AddFile';
+import ImageDetailPage from './pages/ImageDetailPage/ImageDetailPage';
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
         <Route path="/görsellerim" element={<MyImagesPage />} />
         <Route path="/tümü" element={<AllPage />} />
         <Route path="/ekle" element={<AddFile />} />
+        <Route path="/images/:id" element={<ImageDetailPage />} />
       </Routes>
     </Router>
   );

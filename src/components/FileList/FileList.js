@@ -24,14 +24,15 @@ export default function FileList({ files, onDelete }) {
         <ul className="image-list">
           {imageFiles.map((file) => (
             <li key={file.id} className="card">
-              <button className="delete-btn" onClick={() => onDelete(file.id)}>
-                <FaTrash />
-              </button>
-              <img src={`${baseURL}/uploads/${file.filePath}`} alt={file.name} />
-              <a href={`${baseURL}/uploads/${file.filePath}`} target="_blank" rel="noreferrer">
-                <strong>{file.name}</strong>
-              </a>{" "}
-              - {file.description}
+                <button className="delete-btn" onClick={() => onDelete(file.id)}>
+                  <FaTrash />
+                </button>
+                <a href={`${baseURL}/uploads/${file.filePath}`} target="_blank" rel="noreferrer">
+                <img src={`${baseURL}/uploads/${file.filePath}`} alt={file.name} />
+                </a>
+              <a href={`/images/${file.id}`} rel="noreferrer">
+                  <strong>{file.name}</strong>
+              </a>
             </li>
           ))}
         </ul>
@@ -44,7 +45,8 @@ export default function FileList({ files, onDelete }) {
         <ul className="pdf-list">
           {pdfFiles.map((file) => (
             <li key={file.id} className="pdf-item">
-              <strong>{file.name}</strong> - {file.description}
+              <strong>{file.name}</strong>
+              <p className="description">{file.description}</p>
               <button className="delete-btn" onClick={() => onDelete(file.id)}>
                 <FaTrash />
               </button>
