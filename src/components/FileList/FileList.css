@@ -116,3 +116,10 @@ ul {
 .text-center {
   text-align: center;
 }
+
+.no-files-message {
+  text-align: center;
+  margin-top: 2rem;
+  font-size: 1.2rem;
+  color: #555;
+}

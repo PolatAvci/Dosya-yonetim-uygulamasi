@@ -4,27 +4,54 @@ import { baseURL } from "../../config";
 import "./ImageDetailPage.css";
 
 export default function ImageDetailPage() {
-  const { id } = useParams(); // URL'den id'yi al
+  const { id } = useParams();
   const [file, setFile] = useState(null);
+  const [imageSrc, setImageSrc] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
 
   useEffect(() => {
-    const fetchFile = async () => {
+    const fetchFileMetaAndImage = async () => {
       const token = localStorage.getItem("token");
       try {
-        const res = await fetch(`${baseURL}/files/${id}`, {
+        // Önce dosya meta bilgisini al
+        const resMeta = await fetch(`${baseURL}/api/physicalfile/filemeta/${id}`, {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        });
+        if (!resMeta.ok) throw new Error("Dosya bulunamadı veya yetki yok.");
+
+        const metaData = await resMeta.json();
+        setFile(metaData);
+
+        // Uzantıya göre resim olup olmadığını kontrol et
+        const imageExtensions = ["jpeg", "jpg", "png", "gif", "bmp", "webp"];
+        const ext = metaData.filePath.split(".").pop().toLowerCase();
+
+        if (!imageExtensions.includes(ext)) {
+          setImageSrc(null);
+          return; // resim değil
+        }
+
+        // Dosya içeriğini binary olarak çek (blob)
+        const resFile = await fetch(`${baseURL}/api/physicalfile/${id}`, {
           headers: {
             Authorization: `Bearer ${token}`,
           },
         });
 
-        if (!res.ok) {
-          throw new Error("Dosya bulunamadı veya yetki yok.");
-        }
+        if (!resFile.ok) throw new Error("Resim dosyası alınamadı.");
 
-        const data = await res.json();
-        setFile(data);
+        const blob = await resFile.blob();
+
+        // Blob'u base64 stringe dönüştür
+        const reader = new FileReader();
+        reader.onloadend = () => {
+          setImageSrc(reader.result);
+        };
+        reader.readAsDataURL(blob);
+
       } catch (err) {
         setError(err.message);
       } finally {
@@ -32,25 +59,19 @@ export default function ImageDetailPage() {
       }
     };
 
-    fetchFile();
+    fetchFileMetaAndImage();
   }, [id]);
-
-  const imageExtensions = ["jpeg", "png", "jpg"];
 
   if (loading) return <p>Görsel yükleniyor...</p>;
   if (error) return <p>{error}</p>;
   if (!file) return <p>Görsel bulunamadı.</p>;
 
-  const isImage = imageExtensions.includes(file.filePath.split(".").pop().toLowerCase());
-
   return (
     <div className="container">
-      {isImage && (
-        <img
-          src={`${baseURL}/uploads/${file.filePath}`}
-          alt={file.name}
-          className="detail-image"
-        />
+      {imageSrc ? (
+        <img src={imageSrc} alt={file.name} className="detail-image" />
+      ) : (
+        <p>Bu dosya bir görsel değil veya görüntülenemiyor.</p>
       )}
       <h1>{file.name}</h1>
       <p>{file.description}</p>

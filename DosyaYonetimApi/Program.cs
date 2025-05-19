@@ -55,7 +55,7 @@ builder.Services.AddCors(options =>
     options.AddPolicy("AllowReact",
     policy =>
     {
-        policy.WithOrigins("http://localhost:3000") // React frontend'in adresi
+        policy.WithOrigins("http://localhost:3000")
               .AllowAnyHeader()
               .AllowAnyMethod();
     });
@@ -69,7 +69,7 @@ builder.Services.AddOpenApi();
 var app = builder.Build();
 
 app.UseCors("AllowReact");
-
+/*
 app.UseStaticFiles(new StaticFileOptions
 {
     OnPrepareResponse = ctx =>
@@ -81,7 +81,7 @@ app.UseStaticFiles(new StaticFileOptions
     RequestPath = "/uploads"
     
 });
-
+*/ //Herkesin erişimine açmak için (şu an sadece kullanıcı erişimi var)
 app.UseStaticFiles(); // wwwroot altındakiler için varsayılan
 
 
