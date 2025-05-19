@@ -1,0 +1,42 @@
+.login-warning-wrapper {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #fefefe;
+}
+
+.login-warning-card {
+  border: 1px solid black;
+  padding: 40px;
+  border-radius: 12px;
+  text-align: center;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  max-width: 500px;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.login-warning-card h1 {
+  font-size: 2rem;
+  margin-bottom: 16px;
+}
+
+.login-warning-card p {
+  font-size: 1.2rem;
+  margin-bottom: 24px;
+}
+
+.login-button {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  font-size: 1rem;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.login-button:hover {
+  background-color: #0056b3;
+}

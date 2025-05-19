@@ -2,13 +2,21 @@ import React, { useState } from 'react';
 import './Auth.css';
 import { useNavigate } from 'react-router-dom';
 import { baseURL } from '../../config';
+import { useEffect } from 'react';
 
 export default function Register() {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
   const [error, setError] = useState('');
-  const navigate = useNavigate(); // 👈 Navigasyon için hook
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const token = localStorage.getItem('token');
+    if (token) {
+      navigate('/tümü'); // Kullanıcı zaten giriş yaptıysa yönlendir
+    }
+  }, [navigate]);
 
   const handleRegister = async (e) => {
     e.preventDefault();

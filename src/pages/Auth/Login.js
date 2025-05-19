@@ -2,12 +2,21 @@ import React, { useState } from 'react';
 import './Auth.css';
 import { useNavigate } from 'react-router-dom';
 import { baseURL } from '../../config';
+import { useEffect } from 'react';
 
 export default function Login() {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
-  const navigate = useNavigate(); // 👈 Yönlendirme için
+  const navigate = useNavigate();
+
+
+  useEffect(() => {
+    const token = localStorage.getItem('token');
+    if (token) {
+      navigate('/tümü'); // Kullanıcı zaten giriş yaptıysa yönlendir
+    }
+  }, [navigate]);
 
   const handleLogin = async (e) => {
     e.preventDefault();
@@ -26,8 +35,8 @@ export default function Login() {
       }
 
       const data = await res.json();
-      localStorage.setItem('token', data.token); // Token kaydı
-      navigate('/tümü'); // 👈 Giriş başarılıysa yönlendir
+      localStorage.setItem('token', data.token);
+      navigate('/tümü');
     } catch (err) {
       setError(err.message);
     }

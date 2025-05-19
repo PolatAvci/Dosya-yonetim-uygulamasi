@@ -1,0 +1,39 @@
+.notfound-wrapper {
+  height: 80vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  background-color: #fdfdfd;
+  color: #333;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  padding: 20px;
+}
+
+.notfound-title {
+  font-size: 8rem;
+  margin: 0;
+  color: #0056b3;
+}
+
+.notfound-message {
+  font-size: 1.5rem;
+  margin-bottom: 30px;
+}
+
+.notfound-button {
+  padding: 12px 24px;
+  font-size: 1rem;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.notfound-button:hover {
+  background-color: #0056b3;
+}
+

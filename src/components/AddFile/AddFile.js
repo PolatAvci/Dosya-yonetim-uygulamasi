@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import './AddFile.css';
 import { FileService } from '../../services/FileService.js';
+import { useEffect } from 'react';
 
 export default function AddFile({ getFiles }) {
   const [selectedFile, setSelectedFile] = useState(null);
@@ -8,6 +9,14 @@ export default function AddFile({ getFiles }) {
   const [fileInputKey, setFileInputKey] = useState(Date.now());
   const [error, setError] = useState('');
   const [success, setSuccess] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+
+  useEffect(() => {
+    // Token kontrolü
+    const token = localStorage.getItem('token');
+    setIsLoggedIn(!!token);
+  }, []);
 
   const handleFileChange = (e) => {
     setSelectedFile(e.target.files[0]);
@@ -16,6 +25,11 @@ export default function AddFile({ getFiles }) {
 
   const uploadFile = async () => {
     if (!selectedFile) return;
+
+    if(!isLoggedIn) {
+      setError('Lütfen giriş yapın.');
+      return;
+    }
 
     if (!description.trim()) {
       setError('Açıklama zorunludur.');
