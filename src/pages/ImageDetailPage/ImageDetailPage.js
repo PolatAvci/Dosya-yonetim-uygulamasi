@@ -11,11 +11,18 @@ export default function ImageDetailPage() {
 
   useEffect(() => {
     const fetchFile = async () => {
+      const token = localStorage.getItem("token");
       try {
-        const res = await fetch(`${baseURL}/files/${id}`);
+        const res = await fetch(`${baseURL}/files/${id}`, {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        });
+
         if (!res.ok) {
-          throw new Error("Dosya bulunamadı");
+          throw new Error("Dosya bulunamadı veya yetki yok.");
         }
+
         const data = await res.json();
         setFile(data);
       } catch (err) {

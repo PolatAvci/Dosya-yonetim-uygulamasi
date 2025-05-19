@@ -335,3 +335,4 @@ C:\Users\polat\OneDrive\Masaüstü\dosya-yonetim-uygulamasi\dosya-yonetim-uygula
 C:\Users\polat\OneDrive\Masaüstü\dosya-yonetim-uygulamasi\dosya-yonetim-uygulamasi\DosyaYonetimApi\obj\Debug\net9.0\DosyaYonetimApi.genruntimeconfig.cache
 C:\Users\polat\OneDrive\Masaüstü\dosya-yonetim-uygulamasi\dosya-yonetim-uygulamasi\DosyaYonetimApi\obj\Debug\net9.0\ref\DosyaYonetimApi.dll
 C:\Users\polat\OneDrive\Masaüstü\Dosya-yonetim-uygulamasi\DosyaYonetimApi\obj\Debug\net9.0\DosyaYonetimApi.sourcelink.json
+C:\Users\polat\OneDrive\Masaüstü\Dosya-yonetim-uygulamasi\DosyaYonetimApi\bin\Debug\net9.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll

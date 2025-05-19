@@ -8,5 +8,6 @@ namespace DbContexts
         public AppDbContext(DbContextOptions<AppDbContext> options) : base(options) { }
 
         public DbSet<FileRecord> Files { get; set; }
+        public DbSet<User> Users => Set<User>();
     }
 }

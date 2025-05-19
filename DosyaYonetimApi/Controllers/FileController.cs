@@ -1,7 +1,9 @@
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using FileManagementApi.Models;
 using DbContexts;
+using System.Security.Claims;
 
 namespace FileManagementApi.Controllers
 {
@@ -18,29 +20,42 @@ namespace FileManagementApi.Controllers
             _env = env;
         }
 
+        private int GetUserId()
+        {
+            return int.Parse(User.FindFirst(ClaimTypes.NameIdentifier)?.Value ?? "0");
+        }
+
+        [Authorize]
         [HttpGet]
         public async Task<IActionResult> GetFiles()
         {
-            var files = await _context.Files.AsNoTracking().ToListAsync();
+            var userId = GetUserId();
+
+            var files = await _context.Files
+                .AsNoTracking()
+                .Where(f => f.UserId == userId)
+                .ToListAsync();
+
             return Ok(files);
         }
 
+        [Authorize]
         [HttpGet("{id}")]
         public async Task<IActionResult> GetFileById(int id)
         {
             var file = await _context.Files
                 .AsNoTracking()
-                .FirstOrDefaultAsync(f => f.Id == id);
+                .FirstOrDefaultAsync(f => f.Id == id && f.UserId == GetUserId());
 
             if (file == null)
-                return NotFound(new { message = "Dosya bulunamadı." });
+                return NotFound(new { message = "Dosya bulunamadı veya yetkiniz yok." });
 
             return Ok(file);
         }
 
-
+        [Authorize]
         [HttpPost("upload")]
-        [Consumes("multipart/form-data")] // Swagger için gerekli!
+        [Consumes("multipart/form-data")]
         public async Task<IActionResult> Upload([FromForm] FileUploadRequest request)
         {
             var file = request.File;
@@ -69,7 +84,8 @@ namespace FileManagementApi.Controllers
                 Name = request.Name,
                 Description = request.Description,
                 UploadDate = DateTime.UtcNow,
-                FilePath = uniqueFileName
+                FilePath = uniqueFileName,
+                UserId = GetUserId()
             };
 
             _context.Files.Add(newFileRecord);
@@ -78,12 +94,14 @@ namespace FileManagementApi.Controllers
             return Ok(new { message = "Dosya yüklendi.", newFileRecord.Id });
         }
 
+        [Authorize]
         [HttpDelete("delete/{id}")]
         public async Task<IActionResult> Delete(int id)
         {
             var fileRecord = await _context.Files.FindAsync(id);
-            if (fileRecord == null)
-                return NotFound("Dosya bulunamadı.");
+
+            if (fileRecord == null || fileRecord.UserId != GetUserId())
+                return NotFound("Dosya bulunamadı veya silme yetkiniz yok.");
 
             var uploadsFolder = Path.Combine(_env.ContentRootPath, "Uploads");
             var filePath = Path.Combine(uploadsFolder, fileRecord.FilePath);

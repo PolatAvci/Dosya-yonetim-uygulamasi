@@ -6,6 +6,8 @@ import MyImagesPage from './pages/MyImages/MyImagesPage';
 import MyFiles from './pages/MyFiles/MyFiles';
 import AddFile from './components/AddFile/AddFile';
 import ImageDetailPage from './pages/ImageDetailPage/ImageDetailPage';
+import Login from './pages/Auth/Login';
+import Register from './pages/Auth/Register';
 
 function App() {
   return (
@@ -18,6 +20,8 @@ function App() {
         <Route path="/tümü" element={<AllPage />} />
         <Route path="/ekle" element={<AddFile />} />
         <Route path="/images/:id" element={<ImageDetailPage />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/register" element={<Register />} />
       </Routes>
     </Router>
   );
