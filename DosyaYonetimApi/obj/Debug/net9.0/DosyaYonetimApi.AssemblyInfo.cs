@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("DosyaYonetimApi")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+51e942ec70ec9707dc8f780c5fd597c133d67e1a")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+10065f612ef4967598fc9ed4d7f5deb6c7bdc064")]
 [assembly: System.Reflection.AssemblyProductAttribute("DosyaYonetimApi")]
 [assembly: System.Reflection.AssemblyTitleAttribute("DosyaYonetimApi")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
