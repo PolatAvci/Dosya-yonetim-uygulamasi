@@ -1,34 +1,33 @@
 import React, { useState } from 'react';
 import './Auth.css';
+import { useNavigate } from 'react-router-dom';
+import { baseURL } from '../../config';
 
-export default function Login({ onLogin }) {
+export default function Login() {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
+  const navigate = useNavigate(); // 👈 Yönlendirme için
 
   const handleLogin = async (e) => {
     e.preventDefault();
     setError('');
 
     try {
-      const res = await fetch('http://localhost:5000/api/auth/login', {
+      const res = await fetch( baseURL + '/api/auth/login', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ username, password }),
       });
 
-      const data = await res.json();
-
       if (!res.ok) {
+        const data = await res.json();
         throw new Error(data.message || 'Giriş başarısız');
       }
 
-      // Token'ı localStorage'a kaydet
-      localStorage.setItem('token', data.token);
-
-      // Üst bileşene login bilgisi gönder
-      if (onLogin) onLogin(data);
-
+      const data = await res.json();
+      localStorage.setItem('token', data.token); // Token kaydı
+      navigate('/tümü'); // 👈 Giriş başarılıysa yönlendir
     } catch (err) {
       setError(err.message);
     }

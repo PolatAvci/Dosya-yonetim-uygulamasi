@@ -1,17 +1,18 @@
 import React, { useState } from 'react';
 import './Auth.css';
+import { useNavigate } from 'react-router-dom';
+import { baseURL } from '../../config';
 
 export default function Register() {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
   const [error, setError] = useState('');
-  const [success, setSuccess] = useState('');
+  const navigate = useNavigate(); // 👈 Navigasyon için hook
 
   const handleRegister = async (e) => {
     e.preventDefault();
     setError('');
-    setSuccess('');
 
     if (password !== confirmPassword) {
       setError('Şifreler eşleşmiyor!');
@@ -19,7 +20,7 @@ export default function Register() {
     }
 
     try {
-      const res = await fetch('http://localhost:5000/api/auth/register', {
+      const res = await fetch( baseURL + '/api/auth/register', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ username, password }),
@@ -30,10 +31,8 @@ export default function Register() {
         throw new Error(data.message || 'Kayıt başarısız');
       }
 
-      setSuccess('Kayıt başarılı! Giriş yapabilirsiniz.');
-      setUsername('');
-      setPassword('');
-      setConfirmPassword('');
+      // Başarılı kayıt sonrası giriş ekranına yönlendir
+      navigate('/login'); // 👈 Buraya yönlendiriyoruz
     } catch (err) {
       setError(err.message);
     }
@@ -68,7 +67,6 @@ export default function Register() {
         />
 
         {error && <p className="error-text">{error}</p>}
-        {success && <p className="success-text">{success}</p>}
 
         <button type="submit">Kayıt Ol</button>
       </form>
